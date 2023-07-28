@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-class timestamp(object):
+class timestamps(object):
     def __call__(self, filename, fh, fig=None):
         if fig is not None:
             # do stuff to update plot
