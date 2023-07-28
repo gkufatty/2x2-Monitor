@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 class timestamp(object):
     def __call__(self, filename, fh, fig=None):
@@ -14,8 +15,7 @@ class timestamp(object):
             sync_packet_mask = packets['packet_type']==7
             rollover_packet_mask=(packets['packet_type']==6) & (packets['trigger_type'] == 83)
             other_packet_mask= ~(data_packet_mask | trig_packet_mask | sync_packet_mask | rollover_packet_mask)
-           
-            fig,axes = plt.subplots(2,2,dpi=100,sharex='col',figsize=(10,8))
+            fig,axes = plt.subplots(2,2,dpi=100,figsize=(10,8))
             axes[0,0].plot(packets['timestamp'][data_packet_mask],packet_index[data_packet_mask],'o',label='data packets', linestyle='None')
             axes[0,0].plot(packets['timestamp'][trig_packet_mask],packet_index[trig_packet_mask],'o',label='trigger packets',linestyle='None')
             axes[0,0].plot(packets['timestamp'][sync_packet_mask],packet_index[sync_packet_mask],'o',label='sync packet',linestyle='None')
@@ -31,7 +31,7 @@ class timestamp(object):
             axes[1,1].hist(packets['receipt_timestamp'], bins=100)
             axes[0,0].legend()
             axes[0,0].set_ylabel('packet index')
-            axes[1,0].set(xlabel='timestamp', title='')
+            axes[1,0].set(xlabel='timestamp')
             axes[1,1].set(xlabel='receipt timestamp')
             fig.suptitle('Time structure of packets')
 
