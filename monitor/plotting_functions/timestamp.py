@@ -16,8 +16,13 @@ class timestamp(object):
             pass
         else:
             # do stuff to make new plo
-            fig = plt.figure(dpi=100, figsize=(6,18))
-            packets = fh['packets']
-            plt.hist(packets['timestamp'],bins=100)
+            fig = plt.figure(dpi=100)
+            plt.plot(packets['timestamp'][data_packet_mask],packet_index[data_packet_mask],'o',label='data packets', linestyle='None')
+            plt.plot(packets['timestamp'][trig_packet_mask],packet_index[trig_packet_mask],'o',label='trigger packets',linestyle='None')
+            plt.plot(packets['timestamp'][sync_packet_mask],packet_index[sync_packet_mask],'o',label='sync packet',linestyle='None')
+            plt.plot(packets['timestamp'][rollover_packet_mask],packet_index[rollover_packet_mask],'o',label='rolloever packet',linestyle='None')
+            plt.plot(packets['timestamp'][other_packet_mask],packet_index[other_packet_mask],'o',label='other',linestyle='None')
             plt.xlabel('timestamp')
+            plt.ylabel('packet index')
+            plt.legend()
         return fig
