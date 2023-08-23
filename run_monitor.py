@@ -8,7 +8,7 @@ from monitor.file_watcher import FileWatcher
 from monitor.file_parser import FileParser
 from monitor.plotter import Plotter
 from monitor.plotting_functions import available_plots
-from monitor.mod2-fnal-checkout import Mod2_Checkout
+from monitor.mod2-fnal-checkout import Mod2_Checkout #gk added. Import code to check mod2, should produce json file
 
 available_plots_matplotlib = [plot for plot in available_plots if 'Plotly' not in plot]
 
