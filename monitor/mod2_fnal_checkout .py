@@ -2,12 +2,13 @@ import json
 import numpy as np
 import argparse
 import h5py
+
 _default_input_file=None
 _default_file_prefix=None
 
 
 
-def main(input_file=_default_input_file, \
+def Mod2Checkout(input_file=_default_input_file, \
          file_prefix=_default_file_prefix, \
          **kwargs):
     if input_file==None:
